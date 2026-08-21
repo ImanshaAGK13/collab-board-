@@ -1,0 +1,19 @@
+/* ==========================================
+   File Repository, Archive Logs & Help FAQ Styles
+   ========================================== */
+
+.repo-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.repo-file-card {
+  background: rgba(18, 18, 24, 0.8);
+  border: 1px solid rgba(255, 191, 0, 0.2);
+  border-radius: 14px;
+  padding: 16px;
+}
