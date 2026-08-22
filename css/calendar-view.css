@@ -1,0 +1,25 @@
+/* ==========================================
+   Astral Calendar & Orbital Event Scheduler Styles
+   ========================================== */
+
+.calendar-month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+  padding: 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.calendar-date-cell {
+  background: rgba(18, 18, 24, 0.7);
+  border: 1px solid rgba(255, 191, 0, 0.15);
+  border-radius: 12px;
+  min-height: 100px;
+  padding: 10px;
+  transition: all 0.2s ease;
+}
+
+.calendar-date-cell:hover {
+  border-color: var(--liquid-gold);
+}
