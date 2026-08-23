@@ -1,0 +1,18 @@
+/* ==========================================
+   Settings HUD & Astral Profile Styles
+   ========================================== */
+
+.settings-hud-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 24px;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.hud-sidebar-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
