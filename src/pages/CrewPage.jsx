@@ -106,11 +106,11 @@ export function CrewPage() {
                 alignItems: 'center',
                 gap: 6,
                 fontSize: '0.7rem',
-                color: member.status === 'online' ? '#00e676' : 'var(--liquid-gold)'
+                color: (member.status || 'online') === 'online' ? '#00e676' : 'var(--liquid-gold)'
               }}
             >
               <Radio size={12} />
-              <span>{member.status.toUpperCase()}</span>
+              <span>{(member.status || 'online').toUpperCase()}</span>
             </div>
 
             {/* Avatar & Title */}
@@ -130,7 +130,7 @@ export function CrewPage() {
                   boxShadow: `0 0 15px ${member.color || '#ffbf00'}55`
                 }}
               >
-                {member.initials}
+                {member.initials || member.name.split(' ').map((n) => n[0]).join('').substring(0, 2)}
               </div>
               <div>
                 <h3 style={{ fontFamily: 'var(--font-header)', fontSize: '0.98rem', color: '#fff' }}>

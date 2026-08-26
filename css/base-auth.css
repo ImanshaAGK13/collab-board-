@@ -1,5 +1,6 @@
 /* ==========================================
    Base Architecture, Design Tokens & Auth Styles
+   Code Candy Sliding Auth Panel Design
    ========================================== */
 
 :root {
@@ -29,7 +30,7 @@
   --font-body: 'Outfit', sans-serif;
 }
 
-/* Theme Themes Overrides for Footer Theme Switcher */
+/* Theme Overrides */
 html[data-theme="cyan"], body[data-theme="cyan"], [data-theme="cyan"] {
   --electric-amber: #00d2ff !important;
   --liquid-gold: #00e5ff !important;
@@ -98,22 +99,248 @@ body {
   z-index: -2;
 }
 
-/* Login & Registration Auth Page Styling */
-.auth-page-container {
+/* ==========================================
+   Code Candy Style Sliding Auth Container
+   ========================================== */
+.auth-sliding-wrapper {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 20px;
+  position: relative;
 }
 
-.auth-card {
+.auth-card-container {
+  background: rgba(12, 12, 18, 0.88);
+  border: 1px solid rgba(255, 191, 0, 0.25);
+  border-radius: 24px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(255, 191, 0, 0.12);
+  backdrop-filter: blur(25px);
+  position: relative;
+  overflow: hidden;
+  width: 900px;
+  max-width: 100%;
+  min-height: 580px;
+  transition: all 0.6s ease-in-out;
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sign-in-container {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.sign-up-container {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.auth-card-container.right-panel-active .sign-in-container {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.auth-card-container.right-panel-active .sign-up-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: show 0.6s;
+}
+
+@keyframes show {
+  0%, 49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%, 100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.auth-card-container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+.overlay {
+  background: linear-gradient(135deg, rgba(255, 191, 0, 0.95), rgba(255, 120, 0, 0.95));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  color: #ffffff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
+}
+
+.auth-card-container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 44px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+  transform: translateX(-20%);
+}
+
+.auth-card-container.right-panel-active .overlay-left {
+  transform: translateX(0);
+}
+
+.overlay-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+.auth-card-container.right-panel-active .overlay-right {
+  transform: translateX(20%);
+}
+
+.ghost-btn {
+  border-radius: 30px;
+  border: 2px solid #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  font-family: var(--font-header);
+  padding: 12px 32px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
+  margin-top: 16px;
+}
+
+.ghost-btn:hover {
+  background-color: #ffffff;
+  color: #050508;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+/* Floating label / input field styling */
+.auth-input-group {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.auth-input-group input,
+.auth-input-group select {
   width: 100%;
-  max-width: 440px;
-  background: rgba(18, 18, 24, 0.88);
-  border: 1px solid rgba(255, 191, 0, 0.3);
-  border-radius: 20px;
-  padding: 36px 30px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 11px 40px 11px 42px;
+  color: #fff;
+  font-size: 0.85rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.auth-input-group input:focus,
+.auth-input-group select:focus {
+  border-color: var(--liquid-gold);
+  background: rgba(255, 191, 0, 0.06);
+  box-shadow: 0 0 15px rgba(255, 191, 0, 0.25);
+}
+
+.auth-input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.auth-input-group input:focus ~ .auth-input-icon,
+.auth-input-group select:focus ~ .auth-input-icon {
+  color: var(--liquid-gold);
+}
+
+.auth-password-toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.auth-password-toggle:hover {
+  color: #fff;
+}
+
+/* Responsive breakpoint for mobile */
+@media (max-width: 768px) {
+  .auth-card-container {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .form-container {
+    position: relative;
+    width: 100% !important;
+    height: auto;
+    padding: 28px 24px;
+  }
+  .overlay-container {
+    display: none;
+  }
+  .sign-in-container, .sign-up-container {
+    transform: none !important;
+    opacity: 1 !important;
+    position: relative;
+  }
 }
