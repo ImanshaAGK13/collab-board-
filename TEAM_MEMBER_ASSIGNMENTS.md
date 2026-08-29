@@ -1,34 +1,36 @@
-# 🚀 CollabBoard - 8-Member Individual Task & Branch Guide
+# 🚀 CollabBoard - 8-Member Individual Task & Branch Guide (Frontend + Backend)
 
-මෙම ලේඛනය CollabBoard ව්‍යාපෘතියේ කණ්ඩායම් සාමාජිකයින් 8 දෙනා සඳහා වෙන් වෙන් වශයෙන් සාදන ලද කාර්යභාර හා Git Branch උපදෙස් මාලාවයි.
+මෙම ලේඛනය CollabBoard ව්‍යාපෘතියේ කණ්ඩායම් සාමාජිකයින් 8 දෙනා සඳහා වෙන් වෙන් වශයෙන් සාදන ලද Frontend, Backend කාර්යභාර හා Git Branch උපදෙස් මාලාවයි.
+
+කණ්ඩායම් සාමාජිකයින් 8 දෙනා සඳහාම වෙන් වෙන් Backend File Bundles `MEMBER_CODE_BUNDLES` directory එකෙහි සූදානම් කර ඇත.
 
 ---
 
 ## 📌 1. Member 1 - SK Kavindi
 * **Module / Scope:** Authentication & Access Control (Login, Register & Route Guard)
 * **Assigned Branch:** `feature/member-1-auth`
+* **Bundle Location:** `MEMBER_CODE_BUNDLES/member-1-sk-kavindi/`
 * **Assigned Files:**
-  * `src/pages/AuthPage.jsx` (Sign In / Register double sliding panel, forgot password inline flow)
-  * `src/pages/ResetPasswordPage.jsx` (Page 2 reset password with token validation)
-  * `src/context/AuthContext.jsx` (JWT Auth Context & user session)
-  * `src/components/common/AuthGuard.jsx` (Route Protection)
-  * `css/base-auth.css` (Code Candy sliding card styling)
+  * **Frontend:**
+    * `src/pages/AuthPage.jsx`
+    * `src/pages/ResetPasswordPage.jsx`
+    * `src/context/AuthContext.jsx`
+    * `src/components/common/AuthGuard.jsx`
+    * `css/base-auth.css`
+  * **Backend:**
+    * `server/routes/authRoutes.js`
+    * `server/controllers/authController.js`
+    * `server/models/User.js`
+    * `server/middleware/authMiddleware.js`
 
 ### 💻 Member 1 Git Commands:
 ```bash
-# 1. Update main branch
 git checkout main
 git pull origin main
-
-# 2. Switch to your feature branch
 git checkout feature/member-1-auth
 git merge main
-
-# 3. Save & Commit your changes
 git add .
-git commit -m "feat(auth): update login flow, sliding cards and route guard"
-
-# 4. Push to GitHub
+git commit -m "feat(auth): add frontend login flow & backend auth API endpoints with JWT"
 git push origin feature/member-1-auth
 ```
 
@@ -37,28 +39,27 @@ git push origin feature/member-1-auth
 ## 📌 2. Member 2 - IDRT Sanjeewa
 * **Module / Scope:** Kanban Mission Deck (Task Board & Edit Task Modal)
 * **Assigned Branch:** `feature/member-2-kanban`
+* **Bundle Location:** `MEMBER_CODE_BUNDLES/member-2-idrt-sanjeewa/`
 * **Assigned Files:**
-  * `src/components/kanban/KanbanBoard.jsx` (5-Column Drag/Drop Board View)
-  * `src/components/kanban/TaskCard.jsx` (Reusable Directive Card Component)
-  * `src/components/kanban/TaskModal.jsx` (Directive Creator & Editor Form Modal)
-  * `src/__tests__/TaskCard.test.jsx` (Task Card Unit Test)
-  * `src/__tests__/TaskModal.test.jsx` (Task Modal Integration Test)
+  * **Frontend:**
+    * `src/components/kanban/KanbanBoard.jsx`
+    * `src/components/kanban/TaskCard.jsx`
+    * `src/components/kanban/TaskModal.jsx`
+    * `src/__tests__/TaskCard.test.jsx`
+    * `src/__tests__/TaskModal.test.jsx`
+  * **Backend:**
+    * `server/routes/taskRoutes.js`
+    * `server/controllers/taskController.js`
+    * `server/models/Task.js`
 
 ### 💻 Member 2 Git Commands:
 ```bash
-# 1. Update main branch
 git checkout main
 git pull origin main
-
-# 2. Switch to your feature branch
 git checkout feature/member-2-kanban
 git merge main
-
-# 3. Save & Commit your changes
 git add .
-git commit -m "feat(kanban): update task board, modals and unit tests"
-
-# 4. Push to GitHub
+git commit -m "feat(kanban): add task board UI & task directives CRUD backend API"
 git push origin feature/member-2-kanban
 ```
 
@@ -67,26 +68,25 @@ git push origin feature/member-2-kanban
 ## 📌 3. Member 3 - WRN Wijesooriya
 * **Module / Scope:** To-Do List Module & Main Mission Dashboard View
 * **Assigned Branch:** `feature/member-3-todo`
+* **Bundle Location:** `MEMBER_CODE_BUNDLES/member-3-wrn-wijesooriya/`
 * **Assigned Files:**
-  * `src/pages/DashboardPage.jsx` (Main Cockpit Dashboard, Quick Metrics & View Toggle)
-  * `src/components/todo/TodoListView.jsx` (Interactive To-Do List View with Priority Badges & Actions)
-  * `src/context/WorkspaceContext.jsx` (Shared Task & Directive State Management)
+  * **Frontend:**
+    * `src/pages/DashboardPage.jsx`
+    * `src/components/todo/TodoListView.jsx`
+    * `src/context/WorkspaceContext.jsx`
+  * **Backend:**
+    * `server/routes/taskRoutes.js`
+    * `server/controllers/taskController.js`
+    * `server/models/Task.js`
 
 ### 💻 Member 3 Git Commands:
 ```bash
-# 1. Update main branch
 git checkout main
 git pull origin main
-
-# 2. Switch to your feature branch
 git checkout feature/member-3-todo
 git merge main
-
-# 3. Save & Commit your changes
 git add .
-git commit -m "feat(todo): update todo list view and main cockpit dashboard"
-
-# 4. Push to GitHub
+git commit -m "feat(todo): add todo list view, cockpit dashboard & task archive API"
 git push origin feature/member-3-todo
 ```
 
@@ -95,25 +95,24 @@ git push origin feature/member-3-todo
 ## 📌 4. Member 4 - PO Karunapala
 * **Module / Scope:** Crew Roster & Astronaut Directory Management
 * **Assigned Branch:** `feature/member-4-crew`
+* **Bundle Location:** `MEMBER_CODE_BUNDLES/member-4-po-karunapala/`
 * **Assigned Files:**
-  * `src/pages/CrewPage.jsx` (Astronaut Personnel Cards, Rank Filters & Commission Modal)
-  * `src/context/WorkspaceContext.jsx` (Crew Members Roster State `crewMembers`, `addCrewMember`)
+  * **Frontend:**
+    * `src/pages/CrewPage.jsx`
+    * `src/context/WorkspaceContext.jsx`
+  * **Backend:**
+    * `server/routes/crewRoutes.js`
+    * `server/controllers/crewController.js`
+    * `server/models/Crew.js`
 
 ### 💻 Member 4 Git Commands:
 ```bash
-# 1. Update main branch
 git checkout main
 git pull origin main
-
-# 2. Switch to your feature branch
 git checkout feature/member-4-crew
 git merge main
-
-# 3. Save & Commit your changes
 git add .
-git commit -m "feat(crew): update astronaut roster cards and commissioning modal"
-
-# 4. Push to GitHub
+git commit -m "feat(crew): add astronaut crew roster UI & crew backend API"
 git push origin feature/member-4-crew
 ```
 
@@ -122,26 +121,25 @@ git push origin feature/member-4-crew
 ## 📌 5. Member 5 - KDP Udeepa
 * **Module / Scope:** Telemetry Analytics & Real-Time System Metrics
 * **Assigned Branch:** `feature/member-5-telemetry`
+* **Bundle Location:** `MEMBER_CODE_BUNDLES/member-5-kdp-udeepa/`
 * **Assigned Files:**
-  * `src/pages/TelemetryPage.jsx` (System Health Gauges, Orbital Signal Speeds, Oxygen Purity Stats)
-  * `src/hooks/useRealtimeSocket.js` (Real-Time WebSockets Listener Hook)
-  * `src/components/common/ConflictWarningModal.jsx` (Real-time Concurrent Edit Conflict Resolution UI)
+  * **Frontend:**
+    * `src/pages/TelemetryPage.jsx`
+    * `src/hooks/useRealtimeSocket.js`
+    * `src/components/common/ConflictWarningModal.jsx`
+  * **Backend:**
+    * `server/routes/telemetryRoutes.js`
+    * `server/controllers/telemetryController.js`
+    * `server/sockets/taskSocket.js`
 
 ### 💻 Member 5 Git Commands:
 ```bash
-# 1. Update main branch
 git checkout main
 git pull origin main
-
-# 2. Switch to your feature branch
 git checkout feature/member-5-telemetry
 git merge main
-
-# 3. Save & Commit your changes
 git add .
-git commit -m "feat(telemetry): update telemetry metrics, sockets and conflict modal"
-
-# 4. Push to GitHub
+git commit -m "feat(telemetry): add system metrics UI, telemetry API & Socket.io events"
 git push origin feature/member-5-telemetry
 ```
 
@@ -150,25 +148,24 @@ git push origin feature/member-5-telemetry
 ## 📌 6. Member 6 - HMYN Madugalla
 * **Module / Scope:** Mission Calendar & Event Scheduler
 * **Assigned Branch:** `feature/member-6-calendar`
+* **Bundle Location:** `MEMBER_CODE_BUNDLES/member-6-hmyn-madugalla/`
 * **Assigned Files:**
-  * `src/pages/CalendarPage.jsx` (Orbital Calendar, Spacewalk Sync, Event Scheduler)
-  * `src/context/WorkspaceContext.jsx` (Events State `events`, `addEvent`)
+  * **Frontend:**
+    * `src/pages/CalendarPage.jsx`
+    * `src/context/WorkspaceContext.jsx`
+  * **Backend:**
+    * `server/routes/calendarRoutes.js`
+    * `server/controllers/calendarController.js`
+    * `server/models/Event.js`
 
 ### 💻 Member 6 Git Commands:
 ```bash
-# 1. Update main branch
 git checkout main
 git pull origin main
-
-# 2. Switch to your feature branch
 git checkout feature/member-6-calendar
 git merge main
-
-# 3. Save & Commit your changes
 git add .
-git commit -m "feat(calendar): update mission calendar and event scheduler"
-
-# 4. Push to GitHub
+git commit -m "feat(calendar): add orbital calendar UI & mission events backend API"
 git push origin feature/member-6-calendar
 ```
 
@@ -177,26 +174,25 @@ git push origin feature/member-6-calendar
 ## 📌 7. Member 7 - MKI Dewmini
 * **Module / Scope:** Document Repository & Mission Archives
 * **Assigned Branch:** `feature/member-7-repository`
+* **Bundle Location:** `MEMBER_CODE_BUNDLES/member-7-mki-dewmini/`
 * **Assigned Files:**
-  * `src/pages/RepositoryPage.jsx` (Technical Documents & Safety Manuals)
-  * `src/pages/ArchivePage.jsx` (Completed & Archived Directives Vault)
-  * `src/context/WorkspaceContext.jsx` (Archived Tasks `archivedTasks` & Documents State `documents`)
+  * **Frontend:**
+    * `src/pages/RepositoryPage.jsx`
+    * `src/pages/ArchivePage.jsx`
+    * `src/context/WorkspaceContext.jsx`
+  * **Backend:**
+    * `server/routes/documentRoutes.js`
+    * `server/controllers/documentController.js`
+    * `server/models/Document.js`
 
 ### 💻 Member 7 Git Commands:
 ```bash
-# 1. Update main branch
 git checkout main
 git pull origin main
-
-# 2. Switch to your feature branch
 git checkout feature/member-7-repository
 git merge main
-
-# 3. Save & Commit your changes
 git add .
-git commit -m "feat(repository): update document repository and archived vault"
-
-# 4. Push to GitHub
+git commit -m "feat(repository): add document repository UI & documents backend API"
 git push origin feature/member-7-repository
 ```
 
@@ -205,30 +201,30 @@ git push origin feature/member-7-repository
 ## 📌 8. Member 8 - AGK Imansha
 * **Module / Scope:** Cockpit App Layout, Navigation, Settings & Global Themes
 * **Assigned Branch:** `feature/member-8-layout`
+* **Bundle Location:** `MEMBER_CODE_BUNDLES/member-8-agk-imansha/`
 * **Assigned Files:**
-  * `src/components/layout/AppLayout.jsx` (Main Frame Container)
-  * `src/components/layout/Sidebar.jsx` (Navigation Bar & Station Links)
-  * `src/components/layout/Topbar.jsx` (User Profile Pill, Quick Search & Status Indicator)
-  * `src/components/layout/Footer.jsx` (Station System Bar)
-  * `src/pages/SettingsPage.jsx` (Station Theme Tokens & Preferences)
-  * `src/pages/HelpPage.jsx` (Station Protocol Documentation & Guidelines)
-  * `src/App.jsx` (Global Router Setup & Providers)
-  * `css/style.css` (Global Theme Tokens & Dark/Gold CSS Rules)
+  * **Frontend:**
+    * `src/components/layout/AppLayout.jsx`
+    * `src/components/layout/Sidebar.jsx`
+    * `src/components/layout/Topbar.jsx`
+    * `src/components/layout/Footer.jsx`
+    * `src/pages/SettingsPage.jsx`
+    * `src/pages/HelpPage.jsx`
+    * `src/App.jsx`
+    * `css/style.css`
+  * **Backend:**
+    * `server/server.js`
+    * `server/package.json`
+    * `server/.env`
+    * `server/config/db.js`
 
 ### 💻 Member 8 Git Commands:
 ```bash
-# 1. Update main branch
 git checkout main
 git pull origin main
-
-# 2. Switch to your feature branch
 git checkout feature/member-8-layout
 git merge main
-
-# 3. Save & Commit your changes
 git add .
-git commit -m "feat(layout): update cockpit app frame, sidebar, settings and global styles"
-
-# 4. Push to GitHub
+git commit -m "feat(layout): add app frame layout, sidebar, server.js entry & MongoDB config"
 git push origin feature/member-8-layout
 ```
