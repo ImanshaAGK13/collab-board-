@@ -48,7 +48,7 @@ export async function getTasks(req, res) {
     if (tasks && tasks.length > 0) {
       return res.status(200).json({ success: true, tasks });
     }
-  } catch {}
+  } catch { }
   return res.status(200).json({ success: true, tasks: inMemoryTasks });
 }
 
@@ -89,7 +89,7 @@ export async function updateTask(req, res) {
     try {
       const updated = await Task.findOneAndUpdate({ taskId: id }, updates, { new: true });
       if (updated) return res.status(200).json({ success: true, task: updated });
-    } catch {}
+    } catch { }
 
     inMemoryTasks = inMemoryTasks.map((t) => (t.taskId === id ? { ...t, ...updates } : t));
     const found = inMemoryTasks.find((t) => t.taskId === id);
@@ -104,7 +104,7 @@ export async function deleteTask(req, res) {
     const { id } = req.params;
     try {
       await Task.findOneAndDelete({ taskId: id });
-    } catch {}
+    } catch { }
     inMemoryTasks = inMemoryTasks.filter((t) => t.taskId !== id);
     return res.status(200).json({ success: true, message: `Task ${id} deleted.` });
   } catch (err) {
@@ -117,7 +117,7 @@ export async function archiveTask(req, res) {
     const { id } = req.params;
     try {
       await Task.findOneAndUpdate({ taskId: id }, { isArchived: true, status: 'archived', archivedAt: new Date().toISOString().split('T')[0] });
-    } catch {}
+    } catch { }
     inMemoryTasks = inMemoryTasks.filter((t) => t.taskId !== id);
     return res.status(200).json({ success: true, message: `Task ${id} archived.` });
   } catch (err) {
