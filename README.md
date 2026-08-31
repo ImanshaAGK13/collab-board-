@@ -1,4 +1,4 @@
-# CollabBoard
+# CollabBoard(Team 82)
 
 A collaborative team task board built with React — Assignment 01 (Static Front-End Skeleton).
 
@@ -8,9 +8,22 @@ CollabBoard is a Kanban-style task management platform with a space-station miss
 
 ## Tech Stack
 
-- React 18 + Vite
-- React Router
-- Lucide React (icons)
+## Tech Stack
+
+**Frontend**
+
+* React 18 + Vite
+* React Router
+* Socket.io Client (real-time updates)
+* Lucide React (icons)
+* Vitest + React Testing Library (unit tests)
+
+**Backend**
+
+* Node.js + Express (REST API)
+* MongoDB + Mongoose (with in-memory fallback if MongoDB isn't running)
+* Socket.io (real-time task events)
+* JWT + bcrypt (authentication — see Known Limitations)
 
 ## Team
 
@@ -27,12 +40,24 @@ CollabBoard is a Kanban-style task management platform with a space-station miss
 
 ## How to Run
 
+**Frontend**
+
 \`\`\`bash
 npm install
 npm run dev
 \`\`\`
 
 Then open the local URL shown in the terminal (usually `http://localhost:3000`).
+
+**Backend**
+
+\`\`\`bash
+cd server
+npm install
+npm run dev
+\`\`\`
+
+Then the API runs at `http://localhost:5000` (create a .env file in server/ first — see .env.example).
 
 ## Wireframe & Component Tree
 
