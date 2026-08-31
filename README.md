@@ -55,7 +55,7 @@ Then open the local URL shown in the terminal (usually `http://localhost:3000`).
 cd server
 npm install
 npm run dev
-\`\`\`
+```
 
 Then the API runs at `http://localhost:5000` (create a .env file in server/ first — see .env.example).
 
