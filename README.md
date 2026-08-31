@@ -6,7 +6,6 @@ A collaborative team task board built with React — Assignment 01 (Static Front
 
 CollabBoard is a Kanban-style task management platform with a space-station mission control theme. It lets a small team create tasks, move them between columns (To Do / In Progress / Done), manage crew members, schedule events, and track project documents.
 
-## Tech Stack
 
 ## Tech Stack
 
