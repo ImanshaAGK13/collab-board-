@@ -1,0 +1,26 @@
+/* ==========================================
+   Crew Roster & Astronaut Permission Styles
+   ========================================== */
+
+.crew-roster-layout {
+  padding: 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.crew-card {
+  background: rgba(22, 22, 28, 0.85);
+  border: 1px solid rgba(255, 191, 0, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.crew-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--liquid-gold);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}

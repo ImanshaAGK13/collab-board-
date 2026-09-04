@@ -1,0 +1,346 @@
+/* ==========================================
+   Base Architecture, Design Tokens & Auth Styles
+   Code Candy Sliding Auth Panel Design
+   ========================================== */
+
+:root {
+  /* Color Palette */
+  --pitch-black: #050508;
+  --obsidian-gray: #121216;
+  --electric-amber: #ff9f00;
+  --liquid-gold: #ffbf00;
+  --neon-white: #ffffff;
+  
+  --deep-space: var(--pitch-black);
+  --indigo-nebula: #0f0f13;
+  --blue: var(--electric-amber);
+  --purple: var(--liquid-gold);
+  --cyan: var(--liquid-gold);
+  --pink: #ff4560; /* warning/critical */
+  --text-white: var(--neon-white);
+  --text-cyan: #ffeaa7; /* soft gold/cream */
+  --text-muted: #8e8e9c;
+  --card-bg: rgba(22, 22, 28, 0.7);
+  --glass-bg: rgba(15, 15, 18, 0.55);
+  --glass-border: rgba(255, 191, 0, 0.12);
+  --glass-blur: blur(25px);
+  
+  /* Fonts */
+  --font-header: 'Orbitron', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+/* Theme Overrides */
+html[data-theme="cyan"], body[data-theme="cyan"], [data-theme="cyan"] {
+  --electric-amber: #00d2ff !important;
+  --liquid-gold: #00e5ff !important;
+  --text-cyan: #b3f5ff !important;
+  --blue: #00d2ff !important;
+  --purple: #00e5ff !important;
+  --cyan: #00e5ff !important;
+  --glass-border: rgba(0, 229, 255, 0.3) !important;
+}
+
+html[data-theme="crimson"], body[data-theme="crimson"], [data-theme="crimson"] {
+  --electric-amber: #ff4560 !important;
+  --liquid-gold: #ff2a4b !important;
+  --text-cyan: #ffb3be !important;
+  --blue: #ff4560 !important;
+  --purple: #ff2a4b !important;
+  --cyan: #ff2a4b !important;
+  --glass-border: rgba(255, 42, 75, 0.3) !important;
+}
+
+/* Reset & Core Setup */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+html {
+  background-color: var(--deep-space);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-white);
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Cosmic Canvas Background */
+.nebula-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--pitch-black);
+  background-image: url('../collab_bg.jpeg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: -3;
+}
+
+.nebula-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 30%, rgba(255, 191, 0, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(255, 159, 0, 0.06) 0%, transparent 65%);
+  z-index: -2;
+}
+
+/* ==========================================
+   Code Candy Style Sliding Auth Container
+   ========================================== */
+.auth-sliding-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+.auth-card-container {
+  background: rgba(12, 12, 18, 0.88);
+  border: 1px solid rgba(255, 191, 0, 0.25);
+  border-radius: 24px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(255, 191, 0, 0.12);
+  backdrop-filter: blur(25px);
+  position: relative;
+  overflow: hidden;
+  width: 900px;
+  max-width: 100%;
+  min-height: 580px;
+  transition: all 0.6s ease-in-out;
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sign-in-container {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.sign-up-container {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.auth-card-container.right-panel-active .sign-in-container {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.auth-card-container.right-panel-active .sign-up-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: show 0.6s;
+}
+
+@keyframes show {
+  0%, 49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%, 100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.auth-card-container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+.overlay {
+  background: linear-gradient(135deg, rgba(255, 191, 0, 0.95), rgba(255, 120, 0, 0.95));
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  color: #ffffff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
+}
+
+.auth-card-container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+
+.overlay-panel {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 44px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+  transform: translateX(-20%);
+}
+
+.auth-card-container.right-panel-active .overlay-left {
+  transform: translateX(0);
+}
+
+.overlay-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+.auth-card-container.right-panel-active .overlay-right {
+  transform: translateX(20%);
+}
+
+.ghost-btn {
+  border-radius: 30px;
+  border: 2px solid #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  font-family: var(--font-header);
+  padding: 12px 32px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
+  margin-top: 16px;
+}
+
+.ghost-btn:hover {
+  background-color: #ffffff;
+  color: #050508;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+/* Floating label / input field styling */
+.auth-input-group {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.auth-input-group input,
+.auth-input-group select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 11px 40px 11px 42px;
+  color: #fff;
+  font-size: 0.85rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.auth-input-group input:focus,
+.auth-input-group select:focus {
+  border-color: var(--liquid-gold);
+  background: rgba(255, 191, 0, 0.06);
+  box-shadow: 0 0 15px rgba(255, 191, 0, 0.25);
+}
+
+.auth-input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.auth-input-group input:focus ~ .auth-input-icon,
+.auth-input-group select:focus ~ .auth-input-icon {
+  color: var(--liquid-gold);
+}
+
+.auth-password-toggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.auth-password-toggle:hover {
+  color: #fff;
+}
+
+/* Responsive breakpoint for mobile */
+@media (max-width: 768px) {
+  .auth-card-container {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .form-container {
+    position: relative;
+    width: 100% !important;
+    height: auto;
+    padding: 28px 24px;
+  }
+  .overlay-container {
+    display: none;
+  }
+  .sign-in-container, .sign-up-container {
+    transform: none !important;
+    opacity: 1 !important;
+    position: relative;
+  }
+}

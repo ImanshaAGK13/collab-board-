@@ -1,0 +1,22 @@
+/* ==========================================
+   Orbital Telemetry & Analytics Dashboard Styles
+   ========================================== */
+
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.radial-breakdown-svg {
+  width: 44px;
+  height: 44px;
+  transform: rotate(-90deg);
+}
+
+.ring-done { stroke: var(--liquid-gold); }
+.ring-doing { stroke: var(--electric-amber); }
+.ring-todo { stroke: #ffeaa7; }
