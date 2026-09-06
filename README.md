@@ -24,6 +24,7 @@ CollabBoard is a Kanban-style task management platform with a space-station miss
 * Socket.io (real-time task events)
 * JWT + bcrypt (authentication — see Known Limitations)
 
+
 ## Team
 
 | Member | Responsibility |
@@ -57,6 +58,17 @@ npm run dev
 \`\`\`
 
 Then the API runs at `http://localhost:5000` (create a .env file in server/ first — see .env.example).
+
+
+**Database**
+Create a .env file in server/ (see .env.example), make sure MongoDB is running locally, then seed it:
+
+\`\`\`bash
+cd server
+npm install
+npm run seed
+\`\`\`
+
 
 ## Wireframe & Component Tree
 
